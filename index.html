@@ -20,12 +20,12 @@
 
     <section class="main-content">
       <h1>
-<a id="readmorejs" class="anchor" href="#readmorejs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Readmore.js</h1>
+<a id="readmorejs" class="anchor" href="#readmorejs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>readMore.js</h1>
 
 <p>A smooth, responsive jQuery plugin for collapsing and expanding long blocks of text with "Read more" and "Read Less" links.</p>
 
-<h2>Example</h2>
-    <div class="article">
+<h2>Demo 1 - Basic </h2>
+    <div class="article" style="background:#fbfbff; padding:20px;">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex ea facere saepe, hic quod sunt molestias, 
           corrupti veritatis. Accusantium modi molestiae ab commodi error. Maiores ab quo recusandae reprehenderit 
@@ -55,7 +55,93 @@
     $(".article").readMore();
 &lt;/script&gt;
 </code></pre>
+<hr/>
+<h2>Demo 2 - Basic With Some Exclusion  </h2>
+    <div class="article_ex" style="background:#fbfbff; padding:20px;">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex ea facere saepe, hic quod sunt molestias, 
+          corrupti veritatis. Accusantium modi molestiae ab commodi error. Maiores ab quo recusandae reprehenderit 
+          impedit minus non, libero cumque, dignissimos officia illo neque quia! Placeat et labore quam, vero atque minus. 
+          Quas fuga nobis, soluta officiis temporibus similique sapiente quaerat magni repudiandae. 
+        </p>
 
+        <p>
+          Accusamus quaerat autem consectetur atque fugiat fuga quisquam, officia deserunt? Facilis et 
+          voluptatem numquam quia ratione, deserunt totam incidunt beatae aspernatur autem ipsum voluptatibus, 
+          architecto molestias nesciunt consectetur voluptates iste perspiciatis aliquam ipsam, dicta eveniet nulla quasi. 
+          Id, cumque. Deserunt quisquam, blanditiis at dolor, excepturi aspernatur qui praesentium. Neque asperiores magnam quod 
+        </p>
+        <h2>Heading 2</h2>
+        <p> 
+          voluptatem ab id facere vero officia, illo inventore similique. Dolorum porro impedit repellat natus distinctio optio vel, 
+          repudiandae nemo laborum neque cum illum explicabo saepe quis aspernatur deleniti, dolore quisquam cupiditate ad dolores!
+          Dolores, quidem, dolore. Nesciunt, sapiente enim quis, unde fuga voluptas reiciendis deserunt eum quisquam odit veritatis 
+          tenetur iste veniam alias itaque beatae. Consectetur necessitatibus cupiditate cumque, iste dolores expedita assumenda quibusdam 
+          harum ipsa, labore, repellendus, non veritatis ab. Commodi, illo, similique nam, enim modi aut dignissimos necessitatibus nobis 
+          totam et dolores tenetur nisi, culpa inventore? Fugit, quam, porro!
+        </p>
+        <h3>Listing</h3>
+        <ul>
+          <li>List 1</li>
+          <li>List 2</li>
+          <li>List 3</li>
+          <li>List 4</li>
+          <li>List 5</li>
+          <li>List 6</li>
+          <li>List 7</li>
+        </ul>
+        <h2>Heading 3</h2>
+        <p> 
+          voluptatem ab id facere vero officia, illo inventore similique. Dolorum porro impedit repellat natus distinctio optio vel, 
+          repudiandae nemo laborum neque cum illum explicabo saepe quis aspernatur deleniti, dolore quisquam cupiditate ad dolores!
+          Dolores, quidem, dolore. Nesciunt, sapiente enim quis, unde fuga voluptas reiciendis deserunt eum quisquam odit veritatis 
+          tenetur iste veniam alias itaque beatae. Consectetur necessitatibus cupiditate cumque, iste dolores expedita assumenda quibusdam 
+          harum ipsa, labore, repellendus, non veritatis ab. Commodi, illo, similique nam, enim modi aut dignissimos necessitatibus nobis 
+          totam et dolores tenetur nisi, culpa inventore? Fugit, quam, porro!
+        </p>
+    </div>    
+<h2>How to Use</h2>
+<pre><code>&lt;script src="readMore.js" &gt;&lt;/script&gt;
+&lt;script&gt;
+    $(".article_ex").readMore({ excludeTag : "ul,li,h3"});
+&lt;/script&gt;
+</code></pre>
+<hr/>
+<h2>Demo 3 - With List  </h2>
+<div>
+    <div style="background:#fbfbff; padding:20px; float:left; width:48%;">
+        <h2>Listing</h2>
+        <ul class="ul-list">
+          <li>List 1</li>
+          <li>List 2</li>
+          <li>List 3</li>
+          <li>List 4</li>
+          <li>List 5</li>
+          <li>List 6</li>
+          <li>List 7</li>
+        </ul>
+    </div>
+    <div style="background:#fbfbff; padding:20px; float:right; width:48%;">
+        <h2>Listing</h2>
+        <ol class="ul-list">
+          <li>Ordered List</li>
+          <li>Ordered List</li>
+          <li>Ordered List</li>
+          <li>Ordered List</li>
+          <li>Ordered List</li>
+          <li>Ordered List</li>
+          <li>Ordered List</li>
+        </ul>
+
+    </div>
+    <div style="clear:both;"></div>    
+  </div>
+<h2>How to Use</h2>
+<pre><code>&lt;script src="readMore.js" &gt;&lt;/script&gt;
+&lt;script&gt;
+    $(".ul-list").readMore({ childTag : "li" , minVisible: 5});
+&lt;/script&gt;
+</code></pre>
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/droidhive/readMore.js">readMore.js</a> is maintained by <a href="https://github.com/droidhive">droidhive</a>.</span>
       </footer>
@@ -65,6 +151,8 @@
     <script src="readMore.js" ></script>
     <script>
         $(".article").readMore();
+        $(".article_ex").readMore({ excludeTag : "ul,li,h3"});
+        $(".ul-list").readMore({ childTag : "li" , minVisible: 5});
     </script>
   
   </body>
