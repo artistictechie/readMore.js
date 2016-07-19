@@ -1,6 +1,6 @@
 {
   "name": "readMore.js",
   "tagline": "",
-  "body": "# Readmore.js\r\nA smooth, responsive jQuery plugin for collapsing and expanding long blocks of text with \"Read more\" and \"Read Less\" links.\r\n",
+  "body": "# Readmore.js\r\nA smooth, responsive jQuery plugin for collapsing and expanding long blocks of text with \"Read more\" and \"Read Less\" links.\r\n\r\n\r\n\r\n<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js\"></script>\r\n    <script src=\"readMore.js\" ></script>\r\n    <script>\r\n        $(\".article\").readMore();\r\n    </script>",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
