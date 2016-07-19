@@ -1,50 +1,59 @@
 $.fn.readMore = function(params){
 		
-    $values = $.extend(
-                  {
-                     child_tag : "p",
-                     minVisible : 2,
-                     excludeTag : "",
-                     minTextLengthToHide : 50,
-                     readMoreOpenedText : "- Read Less",
-                     readMoreClosedText : "+ Read More",
-                     readMoreBtnClass : "",
-                     animationSpeed : 500
-                   },params);
+    return this.each(function(){
+      
+      var $this = [];
 
-		$excludeTagStr = "";
-		$is_visible = true;
-		$total_element = $(this).children( $values.child_tag ).size();
-		$fisrtElement = $(this).children( $values.child_tag ).eq( $values.minVisible - 1 );
-		
-		if($values.excludeTag.length > 0)
-			    $excludeTagStr = ":not(" + $values.excludeTag + ")";
-		
-		$nextAllElement = $fisrtElement.nextAll( $excludeTagStr );
-		
-		toogleAll = function() {
-                    if($fisrtElement.text().length < $values.minTextLengthToHide){
-                       $fisrtElement.slideToggle( $values.animationSpeed );
-                    } 
-                    $nextAllElement.slideToggle( $values.animationSpeed );		
-                  }	
-		
-		toogleAll();
-		
-		if( $total_element > ($values.minVisible - 1) ) 
-			  $(this).append( "<span style='cursor:pointer;' class='rd_more " + $values.readMoreBtnClass + "'>+ Read More</span>" );
-        
-    $(".rd_more").on("click" , function() {
-          if($is_visible){
-            toogleAll();
-            $(this).html( $values.readMoreOpenedText );
-            $is_visible = false;
-          }
-          else{
-            toogleAll();
-            $(this).html( $values.readMoreClosedText );
-            $is_visible = true;
-          } 
-		});
+      $this.values = $.extend(
+                    {
+                       childTag : "p",
+                       minVisible : 2,
+                       excludeTag : "",
+                       minTextLengthToHide : 50,
+                       readMoreOpenedText : "- Read Less",
+                       readMoreClosedText : "+ Read More",
+                       readMoreBtnClass : "",
+                       animationSpeed : 500
+                     },params);
+      
+  		$this.excludeTagStr = "";
+  		$this.is_visible = true;
+  		$this.total_element = $(this).children( $this.values.childTag ).size();
+  		$this.fisrtElement = $(this).children( $this.values.childTag ).eq( $this.values.minVisible - 1 );
+  		
+  		if($this.values.excludeTag.length > 0)
+  			    $this.excludeTagStr = ":not(" + $this.values.excludeTag + ")";
+  		
+  		$this.nextAllElement = $this.fisrtElement.nextAll( $this.excludeTagStr );
+  		
+  		$this.toogleAll = function() {
+                      if($this.fisrtElement.text().length < $this.values.minTextLengthToHide){
+                         $this.fisrtElement.slideToggle( $this.values.animationSpeed );
+                      } 
+                      $this.nextAllElement.slideToggle( $this.values.animationSpeed );		
+                    }	
+  		
+  		$this.toogleAll();
+  		
+      $this.rdMoreId = "rd_more_" + parseInt(Math.random()*100000);
 
+
+  		if( $this.total_element > ($this.values.minVisible - 1) ) 
+  			  $(this).append( "<span style='cursor:pointer;' id = '" + $this.rdMoreId + "'class='rd_more " + $this.values.readMoreBtnClass + "'>+ Read More</span>" );
+          
+           $(this).find("#" + $this.rdMoreId).on("click" , function() {
+            if($this.is_visible){
+              $this.toogleAll();
+              $(this).html( $this.values.readMoreOpenedText );
+              $this.is_visible = false;
+            }
+            else{
+              $this.toogleAll();
+              $(this).html( $this.values.readMoreClosedText );
+              $this.is_visible = true;
+            } 
+  		});
+
+      return $this;
+    });
 };
