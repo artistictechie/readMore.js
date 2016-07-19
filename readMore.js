@@ -2,11 +2,14 @@ $.fn.readMore = function(params){
 		
     $values = $.extend(
                   {
-                     child_tag : "p",	
+                     child_tag : "p",
                      minVisible : 2,
                      excludeTag : "",
-                     read_more_btn_class : "",
-                     animationSpeed : 500,
+                     minTextLengthToHide : 50,
+                     readMoreOpenedText : "- Read Less",
+                     readMoreClosedText : "+ Read More",
+                     readMoreBtnClass : "",
+                     animationSpeed : 500
                    },params);
 
 		$excludeTagStr = "";
@@ -15,35 +18,33 @@ $.fn.readMore = function(params){
 		$fisrtElement = $(this).children( $values.child_tag ).eq( $values.minVisible - 1 );
 		
 		if($values.excludeTag.length > 0)
-			    $excludeTagStr = ":not("+$values.excludeTag+")";
+			    $excludeTagStr = ":not(" + $values.excludeTag + ")";
 		
-		$nextAllElement = $fisrtElement.nextAll($excludeTagStr);
+		$nextAllElement = $fisrtElement.nextAll( $excludeTagStr );
 		
 		toogleAll = function() {
-                    if($fisrtElement.text().length < 50){
-                       $fisrtElement.slideToggle($values.animationSpeed);
-                    }
-                    
-                    $nextAllElement.slideToggle($values.animationSpeed);		
-                  }
-		
+                    if($fisrtElement.text().length < $values.minTextLengthToHide){
+                       $fisrtElement.slideToggle( $values.animationSpeed );
+                    } 
+                    $nextAllElement.slideToggle( $values.animationSpeed );		
+                  }	
 		
 		$(".rd_more").live("click" , function() {
-        if($is_visible){
-          toogleAll();
-          $(this).html( "- Read Less" );
-          $is_visible=false;
-        }
-        else{
-          toogleAll();
-          $(this).html( "+ Read More" );
-          $is_visible=true;
-        }
+          if($is_visible){
+            toogleAll();
+            $(this).html( $values.readMoreOpenedText );
+            $is_visible = false;
+          }
+          else{
+            toogleAll();
+            $(this).html( $values.readMoreClosedText );
+            $is_visible = true;
+          }
 		});
 		
 		toogleAll();
 		
 		if( $total_element > ($values.minVisible - 1) ) 
-			$(this).append( "<span style='float:right; cursor:pointer;' class='rd_more'>+ Read More</span>" );
+			  $(this).append( "<span style='cursor:pointer;' class='" + $values.readMoreBtnClass + "'>+ Read More</span>" );
 
 };
