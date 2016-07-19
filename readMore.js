@@ -29,7 +29,12 @@ $.fn.readMore = function(params){
                     $nextAllElement.slideToggle( $values.animationSpeed );		
                   }	
 		
-		$(".rd_more").live("click" , function() {
+		toogleAll();
+		
+		if( $total_element > ($values.minVisible - 1) ) 
+			  $(this).append( "<span style='cursor:pointer;' class='rd_more " + $values.readMoreBtnClass + "'>+ Read More</span>" );
+        
+    $(".rd_more").on("click" , function() {
           if($is_visible){
             toogleAll();
             $(this).html( $values.readMoreOpenedText );
@@ -39,12 +44,7 @@ $.fn.readMore = function(params){
             toogleAll();
             $(this).html( $values.readMoreClosedText );
             $is_visible = true;
-          }
+          } 
 		});
-		
-		toogleAll();
-		
-		if( $total_element > ($values.minVisible - 1) ) 
-			  $(this).append( "<span style='cursor:pointer;' class='" + $values.readMoreBtnClass + "'>+ Read More</span>" );
 
 };
